@@ -296,6 +296,7 @@ def stripe_webhook():
                             headers={
                                 "Authorization": f"Bearer {key}",
                                 "Content-Type": "application/json",
+                                "User-Agent": "edge-report-stripe-sync/1.0 (+https://gryszzz.github.io/edge-report/)",
                             },
                         )
                         with urllib.request.urlopen(req, timeout=30) as r:
