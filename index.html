@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
 <title>Edge Report · Track Record</title>
 <style>
-  :root{--bg:#07090f;--card:#0c1220;--line:#1e293b;--text:#e8edf7;--muted:#94a3b8;--dim:#64748b;--teal:#2dd4bf;--teal2:#0d9488;--warn:#fbbf24;--blue:#38bdf8}
+  :root{--bg:#07090f;--card:#0c1220;--line:#1e293b;--text:#e8edf7;--muted:#94a3b8;--dim:#64748b;--teal:#2dd4bf;--teal2:#0d9488;--warn:#fbbf24;--blue:#38bdf8;--drop:#f87171}
   *{box-sizing:border-box}
   body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Helvetica,Arial,sans-serif;line-height:1.5}
   .wrap{max-width:920px;margin:0 auto;padding:32px 20px 80px}
@@ -25,6 +25,7 @@
   .open{background:#134e4a;color:var(--teal)}
   .low{background:#44403c;color:var(--warn)}
   .med{background:#1e3a5f;color:var(--blue)}
+  .dropped{background:#7f1d1d;color:var(--drop)}
   table{width:100%;border-collapse:collapse;font-size:13px}
   th{text-align:left;color:var(--dim);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 6px;border-bottom:1px solid var(--line)}
   td{padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:top}
@@ -40,21 +41,29 @@
     <div class="mark">ER</div>
     <div>
       <h1>EDGE REPORT · TRACK RECORD</h1>
-      <div class="sub">Public ledger · updated Oct 28, 2026 · America/New_York</div>
+      <div class="sub">Public ledger · updated Oct 29, 2026 · ~2:06 PM EDT · America/New_York</div>
     </div>
   </header>
 
   <div class="grid">
-    <div class="metric"><b>1</b><span>Issues</span></div>
-    <div class="metric"><b>4</b><span>Open picks</span></div>
+    <div class="metric"><b>2</b><span>Issues</span></div>
+    <div class="metric"><b>7</b><span>Open picks</span></div>
     <div class="metric"><b>—</b><span>Hit rate</span></div>
     <div class="metric"><b>—</b><span>Brier / ROI</span></div>
   </div>
 
   <div class="card">
+    <h2>Issue #002 · Oct 29, 2026</h2>
+    <p class="meta">Initial pull 10:14–10:20 AM EDT · WX-SAMEDAY re-check ~2:06 PM EDT · paper/research</p>
+    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">Three published edges: Boston NO 69–70° @ 26¢, Atlanta NO 76–77° @ 22¢, BTC $100k-by-end-2026 YES @ 18¢. Chicago ≤67° YES dropped (KMDW already 69.8°F). Weather settles morning Oct 30.</p>
+    <p style="margin:12px 0 0"><a href="issues/002.html">Read Issue #002 →</a></p>
+  </div>
+
+  <div class="card">
     <h2>Issue #001 · Oct 28, 2026</h2>
     <p class="meta">Pull 10:25–10:28 PM EDT · Kalshi + Polymarket · sample issue</p>
-    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">Four edges: NYC weather underprice, Bond cross-venue (rules caveat), BTC $150k touch NO, ETH $2,250 dip YES. Settlements post here as markets resolve. First expected: NYC high, morning Oct 30.</p>
+    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">Four edges: NYC weather underprice, Bond cross-venue (rules caveat), BTC $150k touch NO, ETH $2,250 dip YES. First settlement expected: NYC high, morning Oct 30.</p>
+    <p style="margin:12px 0 0"><a href="issues/001.html">Read Issue #001 →</a></p>
   </div>
 
   <div class="card" style="padding:12px 16px;overflow-x:auto">
@@ -63,6 +72,38 @@
         <tr><th>Pick</th><th>Side</th><th>Entry</th><th>Fair YES</th><th>Edge viz</th><th>Conf</th><th>Status</th><th>Resolves</th></tr>
       </thead>
       <tbody>
+        <tr>
+          <td>Boston high 69–70°F<br/><span class="meta">KXHIGHTBOS-26OCT29-B69.5</span></td>
+          <td>NO</td><td>26¢</td><td>30¢</td>
+          <td><div class="bar"><i style="width:82%"></i></div></td>
+          <td><span class="pill med">MED</span></td>
+          <td><span class="pill open">OPEN</span></td>
+          <td>2026-10-30</td>
+        </tr>
+        <tr>
+          <td>Atlanta high 76–77°F<br/><span class="meta">KXHIGHTATL-26OCT29-B76.5</span></td>
+          <td>NO</td><td>22¢</td><td>62¢</td>
+          <td><div class="bar"><i style="width:40%"></i></div></td>
+          <td><span class="pill med">MED</span></td>
+          <td><span class="pill open">OPEN</span></td>
+          <td>2026-10-30</td>
+        </tr>
+        <tr>
+          <td>Chicago high ≤67°F<br/><span class="meta">KXHIGHCHI-26OCT29-T68</span></td>
+          <td>YES</td><td>1¢</td><td>0¢</td>
+          <td><div class="bar"><i style="width:2%;background:#f87171"></i></div></td>
+          <td><span class="pill med">MED</span></td>
+          <td><span class="pill dropped">DROPPED</span></td>
+          <td>2026-10-30</td>
+        </tr>
+        <tr>
+          <td>BTC $100k by end-2026<br/><span class="meta">Poly 3748314</span></td>
+          <td>YES</td><td>18¢</td><td>27¢</td>
+          <td><div class="bar"><i style="width:26%;background:#fbbf24"></i></div></td>
+          <td><span class="pill low">LOW</span></td>
+          <td><span class="pill open">OPEN</span></td>
+          <td>2027-01-01</td>
+        </tr>
         <tr>
           <td>NYC high 69–70°F<br/><span class="meta">KXHIGHNY-26OCT29-B69.5</span></td>
           <td>YES</td><td>16¢</td><td>32¢</td>
@@ -102,7 +143,7 @@
   <div class="card">
     <h2>Method</h2>
     <p style="color:var(--muted);font-size:14px;margin:0">
-      Entry = ask at publish. Fair YES = stated model (NWS+normal error, GBM touch, or cross mid). Brier and ROI fill after settlement. Kalshi fee modeled as 0.07·p·(1−p). This page is research transparency — not audited fund performance.
+      Entry = ask at publish (Issue #002 entries are post WX-SAMEDAY re-check ~2:06 PM EDT). Fair YES = stated model. Brier and ROI fill after settlement. Kalshi fee 0.07·p·(1−p); Polymarket crypto feeSchedule.rate=0.07. Dropped picks fail the live edge bar and are excluded from open counts. Research transparency — not audited fund performance.
     </p>
   </div>
 

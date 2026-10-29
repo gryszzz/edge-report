@@ -2,20 +2,21 @@
   "product": "Edge Report",
   "version": 1,
   "timezone": "America/New_York",
-  "updated_at": "2026-10-28T22:30:56-04:00",
+  "updated_at": "2026-10-29T14:06:00-04:00",
   "methodology": {
     "scoring": "Each pick logged with venue, market_id, side, entry_price (ask paid), fair_yes (model P(YES)), confidence, category, rationale, resolves. Settled at 1/0 on venue resolution. Brier = mean((forecast-outcome)^2) on YES probability. ROI = sum(pnl)/sum(stake) with $1 contract unit unless stake_usd set.",
     "fees": "Kalshi taker approximated as 0.07*p*(1-p). Polymarket category-dependent; noted per pick.",
     "disclaimer": "Research record, not audited performance. Paper/model edges; live fills may differ."
   },
   "summary": {
-    "issues_published": 1,
-    "picks_open": 4,
+    "issues_published": 2,
+    "picks_open": 7,
     "picks_settled": 0,
+    "picks_dropped": 1,
     "hit_rate": null,
     "brier": null,
     "roi": null,
-    "notes": "Issue #001 published as sample Oct 28, 2026. First settlements expected Oct 30 (NYC high) and ongoing."
+    "notes": "Issue #002 published Oct 29, 2026 after WX-SAMEDAY re-check (~2:06 PM EDT). Chicago er-002-03 dropped (obs high already 69.8F). Issue #001 NYC high still open; settles Oct 30 AM ET."
   },
   "issues": [
     {
@@ -27,6 +28,17 @@
         "markdown": "/home/box/shared/ceo/edge-report/issues/001.md",
         "html": "/home/box/shared/ceo/edge-report/issues/001.html"
       }
+    },
+    {
+      "id": "002",
+      "title": "Same-day weather (BOS+ATL) + short BTC touch; CHI dropped on re-check",
+      "published_at": "2026-10-29T14:06:00-04:00",
+      "pull_window": "2026-10-29T10:14:00-04:00/2026-10-29T10:20:00-04:00",
+      "paths": {
+        "markdown": "/home/box/shared/ceo/edge-report/issues/002.md",
+        "html": "/home/box/shared/ceo/edge-report/issues/002.html"
+      },
+      "recheck_at": "2026-10-29T14:06:00-04:00"
     }
   ],
   "picks": [
@@ -137,6 +149,115 @@
         "Coinbase ETH-USD spot",
         "Polymarket 3866000"
       ]
+    },
+    {
+      "pick_id": "er-002-01",
+      "issue": "002",
+      "created_at": "2026-10-29T14:06:00-04:00",
+      "venue": "kalshi",
+      "market_id": "KXHIGHTBOS-26OCT29-B69.5",
+      "market": "Boston high temp Oct 29: 69-70\u00b0F",
+      "url": "https://kalshi.com/markets/kxhightbos",
+      "side": "NO",
+      "entry_price": 0.26,
+      "fair_yes": 0.3,
+      "confidence": "medium",
+      "category": "weather",
+      "resolves": "2026-10-30",
+      "status": "open",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "WX-SAMEDAY re-check ~2:06 PM EDT: KBOS running high 68.0F; NWS hourly max 66F \u2192 \u03bc=68 \u03c3=1.0. Fair YES on 69-70 \u224830% (NO\u224870\u00a2). NO ask 26\u00a2; fee\u22481.4\u00a2; residual\u2248+42\u00a2. Morning draft was NO 41\u00a2 / fair NO ~90\u00a2.",
+      "sources": [
+        "https://api.weather.gov KBOS observations + BOX forecast hourly",
+        "Kalshi market KXHIGHTBOS-26OCT29-B69.5",
+        "WX-SAMEDAY (\u03c3=1.0F after 1 PM, floor at obs high)"
+      ],
+      "recheck_at": "2026-10-29T14:06:00-04:00",
+      "prior_entry_price": 0.41,
+      "prior_fair_yes": 0.096
+    },
+    {
+      "pick_id": "er-002-02",
+      "issue": "002",
+      "created_at": "2026-10-29T14:06:00-04:00",
+      "venue": "kalshi",
+      "market_id": "KXHIGHTATL-26OCT29-B76.5",
+      "market": "Atlanta high temp Oct 29: 76-77\u00b0F",
+      "url": "https://kalshi.com/markets/kxhightatl",
+      "side": "NO",
+      "entry_price": 0.22,
+      "fair_yes": 0.625,
+      "confidence": "medium",
+      "category": "weather",
+      "resolves": "2026-10-30",
+      "status": "open",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "WX-SAMEDAY re-check ~2:06 PM EDT: KATL running high 73.4F; NWS hourly max 76F \u2192 \u03bc=76 \u03c3=1.0. Fair YES on 76-77 \u224862% (NO\u224838\u00a2). NO ask 22\u00a2; fee\u22481.2\u00a2; residual\u2248+14\u00a2. Morning draft was NO 23\u00a2 / fair NO ~71\u00a2.",
+      "sources": [
+        "https://api.weather.gov KATL observations + FFC forecast hourly",
+        "Kalshi market KXHIGHTATL-26OCT29-B76.5",
+        "WX-SAMEDAY (\u03c3=1.0F after 1 PM, floor at obs high)"
+      ],
+      "recheck_at": "2026-10-29T14:06:00-04:00",
+      "prior_entry_price": 0.23,
+      "prior_fair_yes": 0.293
+    },
+    {
+      "pick_id": "er-002-03",
+      "issue": "002",
+      "created_at": "2026-10-29T10:21:00-04:00",
+      "venue": "kalshi",
+      "market_id": "KXHIGHCHI-26OCT29-T68",
+      "market": "Chicago high temp Oct 29: \u226467\u00b0F (<68\u00b0)",
+      "url": "https://kalshi.com/markets/kxhighchi",
+      "side": "YES",
+      "entry_price": 0.01,
+      "fair_yes": 0.0,
+      "confidence": "medium",
+      "category": "weather",
+      "resolves": "2026-10-30",
+      "status": "dropped",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "DROPPED on WX-SAMEDAY re-check ~2:06 PM EDT: KMDW running high already 69.8F (\u226568). Fair YES for <68 \u22480. YES ask 1\u00a2 fails [0.10,0.90] band and edge\u22650.08. Morning draft was YES 9\u00a2 / fair ~48\u00a2.",
+      "sources": [
+        "https://api.weather.gov KMDW observations",
+        "Kalshi market KXHIGHCHI-26OCT29-T68"
+      ],
+      "dropped_at": "2026-10-29T14:06:00-04:00",
+      "prior_entry_price": 0.09,
+      "prior_fair_yes": 0.475,
+      "drop_reason": "obs_high_already_above_strike"
+    },
+    {
+      "pick_id": "er-002-04",
+      "issue": "002",
+      "created_at": "2026-10-29T14:06:00-04:00",
+      "venue": "polymarket",
+      "market_id": "3748314",
+      "market": "Bitcoin hits $100k by Dec 31, 2026",
+      "url": "https://polymarket.com/event/when-will-bitcoin-hit-100k",
+      "side": "YES",
+      "entry_price": 0.18,
+      "fair_yes": 0.27,
+      "confidence": "low",
+      "category": "crypto",
+      "resolves": "2027-01-01",
+      "status": "open",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "Re-check ~2:06 PM EDT: spot $80727; ~63d GBM touch fair YES ~27% at 50% vol vs ask 18\u00a2. Poly crypto fee rate 0.07 (~1.0\u00a2); residual\u2248+8\u00a2. Vol-regime bet. Morning ask was 16\u00a2.",
+      "sources": [
+        "Coinbase BTC-USD spot",
+        "Polymarket 3748314 / Gamma",
+        "GBM touch approx",
+        "Gamma feeSchedule.rate=0.07 (crypto_fees_v2)"
+      ],
+      "fee_note": "Polymarket feeSchedule.rate=0.07 from Gamma",
+      "recheck_at": "2026-10-29T14:06:00-04:00",
+      "prior_entry_price": 0.16
     }
   ]
 }

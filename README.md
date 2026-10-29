@@ -4,6 +4,7 @@ Public track record and issue previews for Edge Report ($9/mo).
 
 - Track record: `/` (index.html)
 - Issue #001 preview: `/issues/001.html`
+- Issue #002 preview: `/issues/002.html`
 - Data: `track-record.json`
 
 ## Webhook worker (`app.py`)
