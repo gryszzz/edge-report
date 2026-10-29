@@ -68,6 +68,7 @@ def _resend(method: str, path: str, body: dict | None = None) -> dict:
         headers={
             "Authorization": f"Bearer {key}",
             "Content-Type": "application/json",
+            "User-Agent": "edge-report-stripe-sync/1.0 (+https://gryszzz.github.io/edge-report/)",
         },
     )
     try:

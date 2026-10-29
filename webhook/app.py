@@ -48,6 +48,7 @@ def _resend_send(from_addr: str, to_email: str, subject: str, html: str) -> dict
         headers={
             "Authorization": f"Bearer {key}",
             "Content-Type": "application/json",
+            "User-Agent": "edge-report-stripe-sync/1.0 (+https://gryszzz.github.io/edge-report/)",
         },
     )
     with urllib.request.urlopen(req, timeout=30) as r:
