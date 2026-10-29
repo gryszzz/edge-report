@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>Edge Report · Track Record</title>
+<style>
+  :root{--bg:#07090f;--card:#0c1220;--line:#1e293b;--text:#e8edf7;--muted:#94a3b8;--dim:#64748b;--teal:#2dd4bf;--teal2:#0d9488;--warn:#fbbf24;--blue:#38bdf8}
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,Helvetica,Arial,sans-serif;line-height:1.5}
+  .wrap{max-width:920px;margin:0 auto;padding:32px 20px 80px}
+  header{display:flex;align-items:center;gap:14px;margin-bottom:28px}
+  .mark{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--teal2),var(--teal));display:grid;place-items:center;font-family:ui-monospace,Menlo,monospace;font-weight:700;color:#041016;font-size:14px}
+  h1{font-size:22px;letter-spacing:.04em;margin:0}
+  .sub{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);margin-top:2px}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:20px 0 28px}
+  @media(max-width:700px){.grid{grid-template-columns:1fr 1fr}}
+  .metric{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:16px;text-align:center}
+  .metric b{display:block;font-family:ui-monospace,Menlo,monospace;font-size:22px;color:var(--teal)}
+  .metric span{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--dim)}
+  .card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:20px 22px;margin-bottom:14px}
+  .card h2{margin:0 0 8px;font-size:16px}
+  .meta{font-size:12px;color:var(--muted);font-family:ui-monospace,Menlo,monospace}
+  .pill{display:inline-block;padding:2px 8px;border-radius:4px;font-size:11px;font-family:ui-monospace,Menlo,monospace;margin-right:6px}
+  .open{background:#134e4a;color:var(--teal)}
+  .low{background:#44403c;color:var(--warn)}
+  .med{background:#1e3a5f;color:var(--blue)}
+  table{width:100%;border-collapse:collapse;font-size:13px}
+  th{text-align:left;color:var(--dim);font-size:10px;letter-spacing:.1em;text-transform:uppercase;padding:8px 6px;border-bottom:1px solid var(--line)}
+  td{padding:10px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+  .bar{height:8px;background:#1e293b;border-radius:4px;overflow:hidden;min-width:80px}
+  .bar>i{display:block;height:100%;background:var(--teal)}
+  footer{margin-top:36px;font-size:12px;color:var(--dim);line-height:1.6}
+  a{color:var(--teal);text-decoration:none}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="mark">ER</div>
+    <div>
+      <h1>EDGE REPORT · TRACK RECORD</h1>
+      <div class="sub">Public ledger · updated Oct 28, 2026 · America/New_York</div>
+    </div>
+  </header>
+
+  <div class="grid">
+    <div class="metric"><b>1</b><span>Issues</span></div>
+    <div class="metric"><b>4</b><span>Open picks</span></div>
+    <div class="metric"><b>—</b><span>Hit rate</span></div>
+    <div class="metric"><b>—</b><span>Brier / ROI</span></div>
+  </div>
+
+  <div class="card">
+    <h2>Issue #001 · Oct 28, 2026</h2>
+    <p class="meta">Pull 10:25–10:28 PM EDT · Kalshi + Polymarket · sample issue</p>
+    <p style="color:var(--muted);font-size:14px;margin:10px 0 0">Four edges: NYC weather underprice, Bond cross-venue (rules caveat), BTC $150k touch NO, ETH $2,250 dip YES. Settlements post here as markets resolve. First expected: NYC high, morning Oct 30.</p>
+  </div>
+
+  <div class="card" style="padding:12px 16px;overflow-x:auto">
+    <table>
+      <thead>
+        <tr><th>Pick</th><th>Side</th><th>Entry</th><th>Fair YES</th><th>Edge viz</th><th>Conf</th><th>Status</th><th>Resolves</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>NYC high 69–70°F<br/><span class="meta">KXHIGHNY-26OCT29-B69.5</span></td>
+          <td>YES</td><td>16¢</td><td>32¢</td>
+          <td><div class="bar"><i style="width:45%"></i></div></td>
+          <td><span class="pill med">MED</span></td>
+          <td><span class="pill open">OPEN</span></td>
+          <td>2026-10-30</td>
+        </tr>
+        <tr>
+          <td>Lowden Bond cross<br/><span class="meta">K NO 57¢ + P YES 36¢ · rules≠</span></td>
+          <td>PAIR</td><td>93.2¢</td><td>—</td>
+          <td><div class="bar"><i style="width:18%;background:#c084fc"></i></div></td>
+          <td><span class="pill low">LOW</span></td>
+          <td><span class="pill open">OPEN</span></td>
+          <td>rules differ</td>
+        </tr>
+        <tr>
+          <td>BTC $150k by end-2027<br/><span class="meta">Poly 3747578</span></td>
+          <td>NO</td><td>75.5¢</td><td>17.5¢</td>
+          <td><div class="bar"><i style="width:22%;background:#fbbf24"></i></div></td>
+          <td><span class="pill low">LOW</span></td>
+          <td><span class="pill open">OPEN</span></td>
+          <td>2028-01-01</td>
+        </tr>
+        <tr>
+          <td>ETH dip $2,250 by end-2026<br/><span class="meta">Poly 3866000</span></td>
+          <td>YES</td><td>78.5¢</td><td>92¢</td>
+          <td><div class="bar"><i style="width:40%;background:#38bdf8"></i></div></td>
+          <td><span class="pill med">MED</span></td>
+          <td><span class="pill open">OPEN</span></td>
+          <td>2027-01-01</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>Method</h2>
+    <p style="color:var(--muted);font-size:14px;margin:0">
+      Entry = ask at publish. Fair YES = stated model (NWS+normal error, GBM touch, or cross mid). Brier and ROI fill after settlement. Kalshi fee modeled as 0.07·p·(1−p). This page is research transparency — not audited fund performance.
+    </p>
+  </div>
+
+  <footer>
+    Data file: <code>track-record.json</code> · Subscribe <a href="https://buy.stripe.com/8x29AT87B4hB0Qp8o4bwk09">$9/mo</a><br/>
+    Not financial advice. Prediction markets can lose 100% of capital.
+  </footer>
+</div>
+</body>
+</html>

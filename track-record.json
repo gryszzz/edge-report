@@ -1,0 +1,142 @@
+{
+  "product": "Edge Report",
+  "version": 1,
+  "timezone": "America/New_York",
+  "updated_at": "2026-10-28T22:30:56-04:00",
+  "methodology": {
+    "scoring": "Each pick logged with venue, market_id, side, entry_price (ask paid), fair_yes (model P(YES)), confidence, category, rationale, resolves. Settled at 1/0 on venue resolution. Brier = mean((forecast-outcome)^2) on YES probability. ROI = sum(pnl)/sum(stake) with $1 contract unit unless stake_usd set.",
+    "fees": "Kalshi taker approximated as 0.07*p*(1-p). Polymarket category-dependent; noted per pick.",
+    "disclaimer": "Research record, not audited performance. Paper/model edges; live fills may differ."
+  },
+  "summary": {
+    "issues_published": 1,
+    "picks_open": 4,
+    "picks_settled": 0,
+    "hit_rate": null,
+    "brier": null,
+    "roi": null,
+    "notes": "Issue #001 published as sample Oct 28, 2026. First settlements expected Oct 30 (NYC high) and ongoing."
+  },
+  "issues": [
+    {
+      "id": "001",
+      "title": "Four edges from live Kalshi & Polymarket books",
+      "published_at": "2026-10-28T22:28:00-04:00",
+      "pull_window": "2026-10-28T22:25:00-04:00/2026-10-28T22:28:00-04:00",
+      "paths": {
+        "markdown": "/home/box/shared/ceo/edge-report/issues/001.md",
+        "html": "/home/box/shared/ceo/edge-report/issues/001.html"
+      }
+    }
+  ],
+  "picks": [
+    {
+      "pick_id": "er-001-01",
+      "issue": "001",
+      "created_at": "2026-10-28T22:28:00-04:00",
+      "venue": "kalshi",
+      "market_id": "KXHIGHNY-26OCT29-B69.5",
+      "market": "NYC high temp Oct 29: 69-70\u00b0F",
+      "url": "https://kalshi.com/markets/kxhighny",
+      "side": "YES",
+      "entry_price": 0.16,
+      "fair_yes": 0.32,
+      "confidence": "medium",
+      "category": "weather",
+      "resolves": "2026-10-30",
+      "status": "open",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "NWS OKX high near 69\u00b0F; market 59\u00a2 on 67-68\u00b0 vs model N(69,2.2) fair 32\u00a2 on 69-70. Ask depth ~87.",
+      "sources": [
+        "https://api.weather.gov (OKX forecast)",
+        "Kalshi market KXHIGHNY-26OCT29-B69.5"
+      ]
+    },
+    {
+      "pick_id": "er-001-02",
+      "issue": "001",
+      "created_at": "2026-10-28T22:28:00-04:00",
+      "venue": "cross",
+      "market_id": "KXBOND-30-JAC+2293863",
+      "market": "Jack Lowden next Bond (Kalshi NO + Poly YES)",
+      "url": "https://kalshi.com/markets/kxbond#KXBOND-30-JAC",
+      "side": "PAIR",
+      "entry_price": 0.932,
+      "fair_yes": null,
+      "legs": [
+        {
+          "venue": "kalshi",
+          "market_id": "KXBOND-30-JAC",
+          "side": "NO",
+          "price": 0.57
+        },
+        {
+          "venue": "polymarket",
+          "market_id": "2293863",
+          "side": "YES",
+          "price": 0.362
+        }
+      ],
+      "confidence": "low",
+      "category": "entertainment",
+      "resolves": "rules_differ",
+      "status": "open",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "Cross cost 93.2\u00a2 + Kalshi fee ~1.7\u00a2. NOT locked: Kalshi cast-by-2030 vs Poly announced earlier window. Prefer Poly YES alone for long Lowden.",
+      "sources": [
+        "Kalshi KXBOND-30-JAC",
+        "Polymarket 2293863"
+      ],
+      "rules_match": false
+    },
+    {
+      "pick_id": "er-001-03",
+      "issue": "001",
+      "created_at": "2026-10-28T22:28:00-04:00",
+      "venue": "polymarket",
+      "market_id": "3747578",
+      "market": "Bitcoin hits $150k by Dec 31, 2027",
+      "url": "https://polymarket.com/event/when-will-bitcoin-hit-150k",
+      "side": "NO",
+      "entry_price": 0.755,
+      "fair_yes": 0.175,
+      "confidence": "low",
+      "category": "crypto",
+      "resolves": "2028-01-01",
+      "status": "open",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "Spot $79910; GBM touch fair YES ~17.5% at 50% vol vs market YES 24.5%. Vol-regime bet.",
+      "sources": [
+        "Coinbase BTC-USD spot",
+        "Polymarket 3747578",
+        "GBM touch approx"
+      ]
+    },
+    {
+      "pick_id": "er-001-04",
+      "issue": "001",
+      "created_at": "2026-10-28T22:28:00-04:00",
+      "venue": "polymarket",
+      "market_id": "3866000",
+      "market": "Ethereum dips to $2,250 by Dec 31, 2026",
+      "url": "https://polymarket.com/event/what-price-will-ethereum-hit-before-2027",
+      "side": "YES",
+      "entry_price": 0.785,
+      "fair_yes": 0.92,
+      "confidence": "medium",
+      "category": "crypto",
+      "resolves": "2027-01-01",
+      "status": "open",
+      "yes_won": null,
+      "pnl_per_contract": null,
+      "rationale": "Spot $2309 (~2.6% above strike); barrier-down touch ~91-94% at 50-70% vol vs YES 78.5\u00a2.",
+      "sources": [
+        "Coinbase ETH-USD spot",
+        "Polymarket 3866000"
+      ]
+    }
+  ]
+}
