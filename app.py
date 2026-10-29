@@ -120,6 +120,35 @@ def stripe_webhook():
                 result = {"sync": result, "welcome_error": body, "status": e.code}
             except Exception as e:
                 result = {"sync": result, "welcome_error": str(e)}
+            # Also fire Resend automation event (belt-and-suspenders)
+            try:
+                event_body = {
+                    "name": "edge_report.subscribed",
+                    "email": email,
+                    "payload": {
+                        "email": email,
+                        "stripe_customer_id": str(obj.get("customer") or ""),
+                    },
+                }
+                key = os.environ.get("RESEND_API_KEY", "")
+                if key and os.environ.get("EDGE_REPORT_ALLOW_SYNC") == "1":
+                    data = json.dumps(event_body).encode()
+                    req = urllib.request.Request(
+                        RESEND + "/events",
+                        data=data,
+                        method="POST",
+                        headers={
+                            "Authorization": f"Bearer {key}",
+                            "Content-Type": "application/json",
+                        },
+                    )
+                    with urllib.request.urlopen(req, timeout=30) as r:
+                        ev = json.load(r)
+                    if isinstance(result, dict):
+                        result["automation_event"] = ev
+            except Exception as e:
+                if isinstance(result, dict):
+                    result["automation_event_error"] = str(e)
 
     return jsonify(result), 200
 
