@@ -123,7 +123,7 @@ def stripe_webhook():
             # Also fire Resend automation event (belt-and-suspenders)
             try:
                 event_body = {
-                    "name": "edge_report.subscribed",
+                    "event": "edge_report.subscribed",
                     "email": email,
                     "payload": {
                         "email": email,
@@ -134,7 +134,7 @@ def stripe_webhook():
                 if key and os.environ.get("EDGE_REPORT_ALLOW_SYNC") == "1":
                     data = json.dumps(event_body).encode()
                     req = urllib.request.Request(
-                        RESEND + "/events",
+                        RESEND + "/events/send",
                         data=data,
                         method="POST",
                         headers={
