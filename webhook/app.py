@@ -154,8 +154,7 @@ def health():
 
 @app.post("/test/dry-route")
 def test_dry_route():
-    """Safe local/staging helper: route sample events without requiring Stripe signature.
-    Never sends email. Always forces dry-run style response of routing decisions.
+    """Pure price→offer routing check. Never mutates Resend or sends email.
     Requires header X-Test-Token == CABAL_TEST_TOKEN when that env is set.
     """
     expected = os.environ.get("CABAL_TEST_TOKEN", "")
@@ -172,33 +171,41 @@ def test_dry_route():
     if not price_id:
         return jsonify({"error": "offer must be edge|scout|na"}), 400
     email = body.get("email", "buyer@example.com")
-    # Hard block: never use a real non-bot address for anything that could mutate when ALLOW=1
-    # This endpoint always calls handle with dry semantics by temporarily... we just don't send.
-    event = {
-        "type": "checkout.session.completed",
-        "data": {
-            "object": {
-                "customer": "cus_test_dry",
-                "customer_details": {"email": email},
-            }
-        },
-    }
-    # Always dry: call sync handlers but do not call _send_welcomes for non-bot emails
-    result = sync.handle_stripe_event(event, [price_id])
+    matched = sync.offers_for_price_ids([price_id])
+    if not matched:
+        return jsonify({"dry": True, "email": email, "price_id": price_id, "matched": [], "welcomes": []}), 200
+    results = []
     welcomes = []
-    for m in result.get("matched") or []:
-        kind = m.get("welcome")
-        frm, subject, _html = _welcome_for(kind)
+    for m in matched:
+        results.append(
+            {
+                "offer": m["key"],
+                "price_id": m["price_id"],
+                "welcome": m["welcome"],
+                "segment_id": m.get("segment_id"),
+                "status_prop": m.get("status_prop"),
+                "sync": {"dry_run": True, "note": "dry-route never mutates"},
+            }
+        )
+        frm, subject, _html = _welcome_for(m["welcome"])
         welcomes.append(
             {
-                "offer": m.get("offer"),
+                "offer": m["key"],
                 "from": frm,
                 "subject": subject,
                 "would_send": False,
                 "note": "dry-route never sends",
             }
         )
-    return jsonify({"dry": True, "sync": result, "welcomes": welcomes}), 200
+    return jsonify(
+        {
+            "dry": True,
+            "email": email,
+            "price_id": price_id,
+            "sync": {"ok": True, "matched": results},
+            "welcomes": welcomes,
+        }
+    ), 200
 
 
 @app.post("/test/send-sample")

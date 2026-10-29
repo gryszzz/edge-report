@@ -16,6 +16,7 @@ import json
 import os
 import sys
 import time
+import urllib.error
 import urllib.request
 from typing import Any
 
@@ -69,8 +70,11 @@ def _resend(method: str, path: str, body: dict | None = None) -> dict:
             "Content-Type": "application/json",
         },
     )
-    with urllib.request.urlopen(req, timeout=30) as r:
-        return json.load(r)
+    try:
+        with urllib.request.urlopen(req, timeout=30) as r:
+            return json.load(r)
+    except urllib.error.HTTPError as e:
+        return {"error": True, "status": e.code, "body": e.read().decode(errors="replace"), "path": path}
 
 
 def upsert_contact(
